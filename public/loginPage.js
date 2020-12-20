@@ -3,21 +3,19 @@
 const userForm = new UserForm();
 
 userForm.loginFormCallback = function(loginData) {
-	let loginCollback = (loginResponse) => {
+	let loginCallback = (loginResponse) => {
 			if (!loginResponse.success) {
 				this.setLoginErrorMessage('Пользователь не существует!');
-			} 
-				location.reload();
+			} else location.reload();
 	};
-	ApiConnector.login(loginData, loginCollback);
+	ApiConnector.login(loginData, loginCallback);
 }
 
 userForm.registerFormCallback = function(registerData) {
-	let registerCollback = (registerResponse) => {
+	let registerCallback = (registerResponse) => {
 			if (!registerResponse.success) {
 				this.setRegisterErrorMessage('Данные введены некорректно!');
-			}
-			location.reload();			
+			} else location.reload();
 			};
-	ApiConnector.register(registerData, registerCollback);
+	ApiConnector.register(registerData, registerCallback);
 }
